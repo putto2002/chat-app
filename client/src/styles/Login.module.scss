@@ -1,0 +1,108 @@
+.pageContainer {
+    position: fixed;
+    width: 20em;
+    height: 30em;
+    top: calc(50vh - 17em);
+    left: calc(50vw - 10em);
+    background: var(--black);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logoIcon {
+    margin-right: 0.3em;
+    color: var(--green);
+    font-size: 1.2em;
+}
+
+.logoText {
+    margin-top: 1.5em;
+    color: var(--white);
+    margin-right: 0.5em;
+}
+
+.loginFormContainer{
+
+    width: 90%;
+    height: 38%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.inputContainer {
+    width: 80%;
+    height: 2em;
+    border-bottom: solid thin var(--grey);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inputIcon {
+    color: var(--green);
+    margin-right: 0.5em;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    outline: 0ex;
+    color: var(--white);
+    font-size: 1.2em;
+    width: 90%;
+}
+
+.loginButton {
+    width: 80%;
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    padding: 0.3em 0;
+
+    margin-top: 1em;
+
+}
+
+.regButton {
+    width: 80%;
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    padding: 0.3em 0;
+    margin-top: 1em;
+
+}
+
+
+
+.RegistrationformContainer {
+    width: 90%;
+    height: 55%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+
+}
+
+.switchFormButton {
+    border-bottom: solid thin var(--white);
+    color: var(--white);
+}
+

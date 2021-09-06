@@ -1,35 +1,76 @@
-const app = require("express")();
-const http = require("http").createServer(app);
-const cors = require("cors")
-const io = require("socket.io")(http, {
-  cors: {
-    origin: "http://10.249.78.163:3000",
-    methods: ["GET", "POST"]
-  }
-});
-
-app.use(cors({
-  origin: "http://10.249.78.163:3000",
-  methods: ["GET", "POST"]
-}))
-
+const express = require("express");
+const app = express();
+const cors = require("cors");
+const AuthenticationRoute = require("./routes/Authentication");
+const RoomRoute = require("./routes/Room");
+const messageRoute = require("./routes/Message");
+const userRoute = require('./routes/User')
+const db = require("./config/dbConfig");
 const PORT = 5000;
 
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST", "PUT"],
+    credentials: true,
+  })
+);
 
-http.listen(PORT, () => {
+app.use("/api/auth", AuthenticationRoute);
+app.use("/api/room", RoomRoute);
+app.use("/api/message", messageRoute);
+app.use("/api/user", userRoute);
+
+const server = app.listen(PORT, () => {
   console.log("Server is running on PORT " + PORT);
-})
+});
 
-io.on('connection', (socket) => {
-  console.log('new client connected');
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
+});
 
-  socket.on('join_room', (roomId, username) => {
-    socket.join(roomId);
-    console.log(`${username} join room ${roomId}`);
+io.on("connection", (socket) => {
+  console.log(`a client is connected to the server!`);
 
+  socket.on("create-room", (data) => {
+    socket.to(data.roomID).emit('invite-to-room', data);
   })
 
-  socket.on('disconnect', () => {
-    console.log('a client disconnected');
-  })
-})
+ 
+
+  socket.on("join-room", (room) => {
+    socket.join(room);
+    console.log(`A client joined room ${room}`);
+  });
+
+  socket.on("send-message", (data) => {
+    console.log(
+      `${data.sender} send ${data.message} to ${data.receiver} via ${data.roomID}`
+    );
+
+    const sqlInsert =
+      "INSERT INTO `message` (`roomID`, `message`, `sender`, `receiver`) VALUES (?, ?, ?, ?);";
+    db.query(
+      sqlInsert,
+      [data.roomID, data.message, data.sender, data.receiver],
+      (error, result) => {
+        if (error) {
+          console.error(error);
+        }
+        if (result) {
+          socket.to(data.roomID).emit("receive-message", data);
+          console.log(result);
+        }
+      }
+    );
+    
+    
+  });
+
+  socket.on("disconnect", () => {
+    console.log("a client disconnected");
+  });
+});

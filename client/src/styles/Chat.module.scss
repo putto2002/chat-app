@@ -1,0 +1,101 @@
+.messageFeedContainer::-webkit-scrollbar {
+    display: none;
+  }
+.messageFeedContainer {
+  width: 100%;
+  height: 82%;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+
+
+  
+  
+}
+
+.messagesContainer {
+  width: 96%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.messageContainer {
+  width: auto;
+  height: auto;
+  max-width: 50%;
+  background: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1em;
+  margin: 0.5em;
+
+  
+}
+
+.message {
+  font-size: 0.9em;
+  font-weight: 400;
+  width: auto;
+  margin: 0.5em;
+  margin: 0.5em 0.7em;
+  color: var(--white);
+}
+
+.inputContainer {
+  width: 96%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.messageInputContainer {
+ width: 90%;
+ height: 40%;
+ border-radius: 1.5em;
+ border: solid medium var(--black);
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ align-items: center;
+ background: var(--white);
+ border: none;
+}
+
+.messageInput {
+  width: 96%;
+  font-size: 0.9em;
+  background: transparent;
+  border: none;
+  outline: 0ch;
+  
+}
+
+.sendButton {
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  background: var(--white);
+  border: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sendIcond {
+  margin: 0;
+  color: var(--green);
+  margin-right: 0.1em;
+}

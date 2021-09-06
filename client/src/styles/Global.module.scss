@@ -1,0 +1,15 @@
+.container{
+    width: 70em;
+    height: 40em;
+    position: fixed;
+    top: calc(50vh - 20em);
+    left: calc(50vw - 35em);
+    background: var(--dark-grey);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}

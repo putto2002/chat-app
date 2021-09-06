@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+:root{
+  --green: rgb(16, 124, 16);
+  --black: rgb(43, 44, 48);
+  --dark-grey: rgb(66, 67, 71);
+  --white: white;
+  --grey: rgb(138, 138, 138);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background: var(--grey);
+  margin: 0;
+  font-family: 'Open Sans';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
